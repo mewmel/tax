@@ -55,7 +55,7 @@ export default function ProfileScreen() {
         <Text style={styles.headerSubtitle}>Quản lý tài khoản cá nhân</Text>
       </View>
 
-      <ScrollView style={styles.content} showsVerticalScrollIndicator={false}>
+      <ScrollView style={styles.content} showsVerticalScrollIndicator={false} contentContainerStyle={{ paddingBottom: 100 }}>
         {/* User Profile Card */}
         <View style={styles.profileCard}>
           <View style={styles.avatarContainer}>

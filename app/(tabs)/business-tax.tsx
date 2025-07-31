@@ -80,7 +80,7 @@ export default function BusinessTaxScreen() {
         <Text style={styles.headerSubtitle}>Quản lý thuế hộ kinh doanh</Text>
       </View>
 
-      <ScrollView style={styles.content} showsVerticalScrollIndicator={false}>
+      <ScrollView style={styles.content} showsVerticalScrollIndicator={false} contentContainerStyle={{ paddingBottom: 100 }}>
         {/* Business Info */}
         <View style={styles.section}>
           <Text style={styles.mainSectionTitle}>Danh sách doanh nghiệp</Text>

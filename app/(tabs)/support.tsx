@@ -109,7 +109,7 @@ export default function SupportScreen() {
         <Text style={styles.headerSubtitle}>Trung tâm trợ giúp VN-Thuế</Text>
       </View>
 
-      <ScrollView style={styles.content} showsVerticalScrollIndicator={false}>
+      <ScrollView style={styles.content} showsVerticalScrollIndicator={false} contentContainerStyle={{ paddingBottom: 100 }}>
         {/* Search Bar */}
         <View style={styles.searchContainer}>
           <View style={styles.searchBar}>

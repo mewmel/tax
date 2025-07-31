@@ -94,7 +94,7 @@ export default function PaymentScreen() {
         <Text style={styles.headerSubtitle}>Thanh toán thuế trực tuyến</Text>
       </View>
 
-      <ScrollView style={styles.content} showsVerticalScrollIndicator={false}>
+      <ScrollView style={styles.content} showsVerticalScrollIndicator={false} contentContainerStyle={{ paddingBottom: 100 }}>
         {/* Pending Payments */}
         <View style={[styles.section, { marginTop: 20 }]}>
           <Text style={styles.sectionTitle}>Khoản thuế cần nộp</Text>
@@ -135,7 +135,6 @@ export default function PaymentScreen() {
                 {getStatusIcon(payment.status)}
                 <View style={styles.recentInfo}>
                   <Text style={styles.recentType}>{payment.type}</Text>
-                  <Text style={styles.recentMethod}>Qua {payment.method}</Text>
                   <Text style={styles.recentDate}>{payment.date}</Text>
                 </View>
               </View>
@@ -149,7 +148,7 @@ export default function PaymentScreen() {
           <View style={styles.sectionHeader}>
             <Text style={styles.sectionTitle}>Lịch nộp thuế</Text>
             <TouchableOpacity style={styles.viewAllButton}>
-              <Calendar size={16} color="#1E40AF" />
+              <Calendar size={16} color="#1E40AF" style={styles.viewAllIcon} />
               <Text style={styles.viewAllText}>Xem tất cả</Text>
             </TouchableOpacity>
           </View>
@@ -225,6 +224,10 @@ const styles = StyleSheet.create({
   viewAllButton: {
     flexDirection: 'row',
     alignItems: 'center',
+    paddingRight: 2,
+  },
+  viewAllIcon: {
+    marginRight: 4,
   },
   viewAllText: {
     fontSize: 14,
@@ -253,12 +256,17 @@ const styles = StyleSheet.create({
   pendingInfo: {
     flexDirection: 'row',
     alignItems: 'center',
+    paddingRight: 4,
+  },
+  pendingIcon: {
+    marginRight: 8,
   },
   pendingType: {
     fontSize: 16,
     fontWeight: '600',
     color: '#111827',
     marginLeft: 8,
+    flex: 1,
   },
   pendingAmount: {
     fontSize: 16,
@@ -311,10 +319,16 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.18,
     shadowRadius: 1.00,
     elevation: 1,
+    minHeight: 80,
   },
   recentLeft: {
     flexDirection: 'row',
     alignItems: 'center',
+    flex: 1,
+    paddingRight: 8,
+  },
+  recentIcon: {
+    marginRight: 12,
   },
   recentInfo: {
     marginLeft: 12,
@@ -323,11 +337,6 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: '600',
     color: '#111827',
-  },
-  recentMethod: {
-    fontSize: 14,
-    color: '#6B7280',
-    marginTop: 2,
   },
   recentDate: {
     fontSize: 12,
@@ -338,6 +347,8 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: '600',
     color: '#111827',
+    textAlign: 'right',
+    minWidth: 100,
   },
   scheduleCard: {
     backgroundColor: '#FFFFFF',

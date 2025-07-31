@@ -292,7 +292,10 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     marginBottom: 8,
-    gap: 8,
+    paddingRight: 4,
+  },
+  detailIcon: {
+    marginRight: 8,
   },
   detailText: {
     fontSize: 14,
@@ -313,12 +316,18 @@ const styles = StyleSheet.create({
     marginBottom: 12,
   },
   servicesList: {
-    gap: 6,
+    paddingVertical: 3,
+  },
+  servicesListItem: {
+    marginBottom: 6,
   },
   serviceItem: {
     flexDirection: 'row',
     alignItems: 'center',
-    gap: 8,
+    paddingRight: 4,
+  },
+  serviceIcon: {
+    marginRight: 8,
   },
   serviceBullet: {
     width: 6,
@@ -333,7 +342,10 @@ const styles = StyleSheet.create({
   },
   actionButtons: {
     flexDirection: 'row',
-    gap: 12,
+    paddingHorizontal: 6,
+  },
+  firstActionButton: {
+    marginRight: 12,
   },
   directionsButton: {
     flex: 1,
@@ -343,7 +355,10 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     paddingVertical: 12,
     borderRadius: 10,
-    gap: 8,
+    paddingRight: 4,
+  },
+  directionsIcon: {
+    marginRight: 8,
   },
   directionsButtonText: {
     fontSize: 14,
@@ -360,7 +375,10 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     paddingVertical: 12,
     borderRadius: 10,
-    gap: 8,
+    paddingRight: 4,
+  },
+  callIcon: {
+    marginRight: 8,
   },
   callButtonText: {
     fontSize: 14,

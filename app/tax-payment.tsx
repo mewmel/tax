@@ -3,6 +3,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { AlertCircle, Clock, Calendar, QrCode, Copy, CheckCircle } from 'lucide-react-native';
 import { Stack, useLocalSearchParams, router } from 'expo-router';
 import ChatbotButton from '@/components/ChatbotButton';
+import UniversalChatbot from '@/components/UniversalChatbot';
 import { useState } from 'react';
 
 export default function TaxPaymentScreen() {
@@ -92,6 +93,18 @@ export default function TaxPaymentScreen() {
 
   return (
     <SafeAreaView style={styles.container}>
+      <UniversalChatbot
+        visible={showChatbot}
+        onClose={() => setShowChatbot(false)}
+        chatType="general"
+      />
+
+      {/* Header */}
+      <View style={styles.header}>
+        <Text style={styles.headerTitle}>Nộp Thuế</Text>
+        <Text style={styles.headerSubtitle}>Thanh toán thuế điện tử</Text>
+      </View>
+
       <Stack.Screen 
         options={{ 
           title: 'Nộp thuế',
@@ -144,7 +157,7 @@ export default function TaxPaymentScreen() {
           </View>
 
           <View style={styles.dueDateContainer}>
-            <Calendar size={16} color="#6B7280" />
+            <Calendar size={16} color="#6B7280" style={styles.dueDateIcon} />
             <Text style={styles.dueDate}>Hạn cuối: {currentTax.dueDate}</Text>
           </View>
         </View>
@@ -154,7 +167,9 @@ export default function TaxPaymentScreen() {
           <Text style={styles.sectionTitle}>Nộp thuế nhanh</Text>
           <View style={styles.quickPaymentForm}>
             <View style={styles.inputGroup}>
-              <Text style={styles.inputLabel}>Mã số thuế</Text>
+              <View style={styles.inputGroupItem}>
+                <Text style={styles.inputLabel}>Mã số thuế</Text>
+              </View>
               <TextInput
                 style={styles.textInput}
                 value={currentTax.taxCode}
@@ -162,7 +177,9 @@ export default function TaxPaymentScreen() {
               />
             </View>
             <View style={styles.inputGroup}>
-              <Text style={styles.inputLabel}>Số tiền (VNĐ)</Text>
+              <View style={styles.inputGroupItem}>
+                <Text style={styles.inputLabel}>Số tiền (VNĐ)</Text>
+              </View>
               <TextInput
                 style={styles.textInput}
                 placeholder="Nhập số tiền cần nộp"
@@ -192,26 +209,26 @@ export default function TaxPaymentScreen() {
               </View>
               
               <View style={styles.paymentDetails}>
-                <View style={styles.detailRow}>
+                <View style={[styles.detailRow, styles.paymentDetailItem]}>
                   <Text style={styles.detailLabel}>Số tài khoản:</Text>
                   <View style={styles.detailValueContainer}>
                     <Text style={styles.detailValue}>{treasuryPaymentInfo.accountNumber}</Text>
-                    <TouchableOpacity onPress={() => copyToClipboard(treasuryPaymentInfo.accountNumber, 'Số tài khoản')}>
+                    <TouchableOpacity onPress={() => copyToClipboard(treasuryPaymentInfo.accountNumber, 'Số tài khoản')} style={styles.detailValueIcon}>
                       <Copy size={16} color="#1E40AF" />
                     </TouchableOpacity>
                   </View>
                 </View>
                 
-                <View style={styles.detailRow}>
+                <View style={[styles.detailRow, styles.paymentDetailItem]}>
                   <Text style={styles.detailLabel}>Tên tài khoản:</Text>
                   <Text style={styles.detailValue}>{treasuryPaymentInfo.accountName}</Text>
                 </View>
                 
-                <View style={styles.detailRow}>
+                <View style={[styles.detailRow, styles.paymentDetailItem]}>
                   <Text style={styles.detailLabel}>Nội dung chuyển khoản:</Text>
                   <View style={styles.detailValueContainer}>
                     <Text style={styles.detailValue}>{treasuryPaymentInfo.transferNote}</Text>
-                    <TouchableOpacity onPress={() => copyToClipboard(treasuryPaymentInfo.transferNote, 'Nội dung chuyển khoản')}>
+                    <TouchableOpacity onPress={() => copyToClipboard(treasuryPaymentInfo.transferNote, 'Nội dung chuyển khoản')} style={styles.detailValueIcon}>
                       <Copy size={16} color="#1E40AF" />
                     </TouchableOpacity>
                   </View>
@@ -274,6 +291,28 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#F0FDF4',
   },
+  header: {
+    backgroundColor: '#059669',
+    paddingVertical: 20,
+    paddingHorizontal: 20,
+    borderBottomWidth: 1,
+    borderBottomColor: '#D1FAE5',
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.1,
+    shadowRadius: 8,
+    elevation: 8,
+  },
+  headerTitle: {
+    fontSize: 24,
+    fontWeight: '700',
+    color: '#FFFFFF',
+  },
+  headerSubtitle: {
+    fontSize: 14,
+    color: '#D1FAE5',
+    marginTop: 4,
+  },
   content: {
     flex: 1,
     paddingHorizontal: 20,
@@ -299,8 +338,11 @@ const styles = StyleSheet.create({
   taxInfo: {
     flexDirection: 'row',
     alignItems: 'center',
-    gap: 8,
     flex: 1,
+    paddingRight: 4,
+  },
+  taxIcon: {
+    marginRight: 8,
   },
   taxType: {
     fontSize: 18,
@@ -385,7 +427,10 @@ const styles = StyleSheet.create({
   dueDateContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    gap: 8,
+    paddingRight: 4,
+  },
+  dueDateIcon: {
+    marginRight: 8,
   },
   dueDate: {
     fontSize: 14,
@@ -411,10 +456,13 @@ const styles = StyleSheet.create({
     marginBottom: 16,
   },
   quickPaymentForm: {
-    gap: 16,
+    marginTop: 8,
   },
   inputGroup: {
-    gap: 8,
+    marginBottom: 16,
+  },
+  inputGroupItem: {
+    marginBottom: 8,
   },
   inputLabel: {
     fontSize: 14,
@@ -538,7 +586,10 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   paymentDetails: {
-    gap: 16,
+    paddingTop: 8,
+  },
+  paymentDetailItem: {
+    marginBottom: 16,
   },
   detailRow: {
     flexDirection: 'row',
@@ -556,9 +607,12 @@ const styles = StyleSheet.create({
   detailValueContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    gap: 8,
     flex: 2,
     justifyContent: 'flex-end',
+    paddingLeft: 4,
+  },
+  detailValueIcon: {
+    marginLeft: 8,
   },
   detailValue: {
     fontSize: 14,

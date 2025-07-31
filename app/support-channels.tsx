@@ -155,7 +155,7 @@ export default function SupportChannelsScreen() {
             Nếu gặp sự cố nghiêm trọng hoặc cần hỗ trợ gấp, vui lòng liên hệ:
           </Text>
           <TouchableOpacity style={styles.emergencyButton}>
-            <Phone size={20} color="#FFFFFF" />
+            <Phone size={20} color="#FFFFFF" style={styles.emergencyIcon} />
             <Text style={styles.emergencyButtonText}>1900 9999</Text>
           </TouchableOpacity>
         </View>
@@ -325,7 +325,10 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     paddingVertical: 12,
     borderRadius: 10,
-    gap: 8,
+    paddingRight: 4,
+  },
+  emergencyIcon: {
+    marginRight: 8,
   },
   emergencyButtonText: {
     fontSize: 16,

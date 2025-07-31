@@ -10,6 +10,27 @@ import {
 } from 'react-native';
 import { Bot, Send, History, MessageSquare, Trash2 } from 'lucide-react-native';
 
+// Simple in-memory storage for chat history (React Native compatible)
+class ChatStorage {
+  private static instance: ChatStorage;
+  private chatHistory: ChatSession[] = [];
+
+  static getInstance(): ChatStorage {
+    if (!ChatStorage.instance) {
+      ChatStorage.instance = new ChatStorage();
+    }
+    return ChatStorage.instance;
+  }
+
+  getChatHistory(): ChatSession[] {
+    return this.chatHistory;
+  }
+
+  setChatHistory(history: ChatSession[]): void {
+    this.chatHistory = history;
+  }
+}
+
 // Message interface
 interface Message {
   id: string;
@@ -126,23 +147,22 @@ const UniversalChatbot: React.FC<UniversalChatbotProps> = ({
     return firstMessage;
   };
 
-  // Load chat history from localStorage
+  // Load chat history from storage
   const loadChatHistory = async () => {
     try {
-      const historyJson = localStorage.getItem('chatHistory');
-      if (historyJson) {
-        const history = JSON.parse(historyJson);
-        setChatHistory(history);
-      }
+      const storage = ChatStorage.getInstance();
+      const history = storage.getChatHistory();
+      setChatHistory(history);
     } catch (error) {
       console.error('Error loading chat history:', error);
     }
   };
 
-  // Save chat history to localStorage
+  // Save chat history to storage
   const saveChatHistory = async (history: ChatSession[]) => {
     try {
-      localStorage.setItem('chatHistory', JSON.stringify(history));
+      const storage = ChatStorage.getInstance();
+      storage.setChatHistory(history);
     } catch (error) {
       console.error('Error saving chat history:', error);
     }

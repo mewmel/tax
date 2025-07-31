@@ -39,7 +39,7 @@ export default function PersonalTaxScreen() {
         <Text style={styles.headerSubtitle}>Quản lý thuế TNCN của bạn</Text>
       </View>
 
-      <ScrollView style={styles.content} showsVerticalScrollIndicator={false}>
+      <ScrollView style={styles.content} showsVerticalScrollIndicator={false} contentContainerStyle={{ paddingBottom: 100 }}>
         {/* Tax Summary */}
         <View style={styles.summaryCard}>
           <Text style={styles.sectionTitle}>Tổng quan năm 2024</Text>

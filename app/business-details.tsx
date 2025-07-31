@@ -102,11 +102,11 @@ export default function BusinessDetailsScreen() {
             </View>
           </View>
           <View style={styles.businessInfo}>
-            <Text style={styles.businessDetail}>MST: {currentBusiness.taxCode}</Text>
-            <Text style={styles.businessDetail}>Địa chỉ: {currentBusiness.address}</Text>
-            <Text style={styles.businessDetail}>Loại hình: {currentBusiness.businessType}</Text>
-            <Text style={styles.businessDetail}>Đăng ký từ: {currentBusiness.registrationDate}</Text>
-            <Text style={styles.businessDetail}>Doanh thu năm: {currentBusiness.revenue}</Text>
+            <Text style={[styles.businessDetail, styles.businessInfoItem]}>MST: {currentBusiness.taxCode}</Text>
+            <Text style={[styles.businessDetail, styles.businessInfoItem]}>Địa chỉ: {currentBusiness.address}</Text>
+            <Text style={[styles.businessDetail, styles.businessInfoItem]}>Loại hình: {currentBusiness.businessType}</Text>
+            <Text style={[styles.businessDetail, styles.businessInfoItem]}>Đăng ký từ: {currentBusiness.registrationDate}</Text>
+            <Text style={[styles.businessDetail, styles.businessInfoItem]}>Doanh thu năm: {currentBusiness.revenue}</Text>
           </View>
         </View>
 
@@ -283,7 +283,10 @@ const styles = StyleSheet.create({
     marginBottom: 16,
   },
   businessInfo: {
-    gap: 8,
+    paddingVertical: 4,
+  },
+  businessInfoItem: {
+    marginBottom: 8,
   },
   businessName: {
     fontSize: 22,

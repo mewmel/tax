@@ -53,7 +53,7 @@ export default function HomeScreen() {
         </View>
       </View>
 
-      <ScrollView style={styles.content} showsVerticalScrollIndicator={false}>
+      <ScrollView style={styles.content} showsVerticalScrollIndicator={false} contentContainerStyle={{ paddingBottom: 100 }}>
         {/* Tax Status Summary */}
         <View style={styles.statusCard}>
           <Text style={styles.sectionTitle}>Tình trạng thuế</Text>

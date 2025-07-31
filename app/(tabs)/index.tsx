@@ -121,36 +121,44 @@ export default function HomeScreen() {
         transparent={true}
         animationType="slide"
         onRequestClose={() => setShowNotifications(false)}
+        presentationStyle="overFullScreen"
       >
         <View style={styles.modalOverlay}>
-          <View style={styles.notificationsModal}>
-            <View style={styles.modalHeader}>
-              <Text style={styles.modalTitle}>Thông báo</Text>
-              <TouchableOpacity 
-                style={styles.closeButton}
-                onPress={() => setShowNotifications(false)}
-              >
-                <X size={24} color="#6B7280" />
-              </TouchableOpacity>
-            </View>
-            
-            <ScrollView style={styles.notificationsList} showsVerticalScrollIndicator={false}>
-              {notifications.map((notification) => (
-                <TouchableOpacity key={notification.id} style={styles.notificationModalCard}>
-                  <View style={styles.notificationContent}>
-                    <View style={styles.notificationHeader}>
-                      <Text style={[styles.notificationTitle, notification.unread && styles.unreadTitle]}>
-                        {notification.title}
-                      </Text>
-                      <Text style={styles.notificationTime}>{notification.time}</Text>
-                    </View>
-                    <Text style={styles.notificationText}>{notification.content}</Text>
-                    {notification.unread && <View style={styles.unreadDot} />}
-                  </View>
+          <TouchableOpacity 
+            style={styles.modalBackdrop}
+            activeOpacity={1}
+            onPress={() => setShowNotifications(false)}
+          />
+          <SafeAreaView style={styles.modalSafeArea}>
+            <View style={styles.notificationsModal}>
+              <View style={styles.modalHeader}>
+                <Text style={styles.modalTitle}>Thông báo</Text>
+                <TouchableOpacity 
+                  style={styles.closeButton}
+                  onPress={() => setShowNotifications(false)}
+                >
+                  <X size={24} color="#6B7280" />
                 </TouchableOpacity>
-              ))}
-            </ScrollView>
-          </View>
+              </View>
+              
+              <ScrollView style={styles.notificationsList} showsVerticalScrollIndicator={false}>
+                {notifications.map((notification) => (
+                  <TouchableOpacity key={notification.id} style={styles.notificationModalCard}>
+                    <View style={styles.notificationContent}>
+                      <View style={styles.notificationHeader}>
+                        <Text style={[styles.notificationTitle, notification.unread && styles.unreadTitle]}>
+                          {notification.title}
+                        </Text>
+                        <Text style={styles.notificationTime}>{notification.time}</Text>
+                      </View>
+                      <Text style={styles.notificationText}>{notification.content}</Text>
+                      {notification.unread && <View style={styles.unreadDot} />}
+                    </View>
+                  </TouchableOpacity>
+                ))}
+              </ScrollView>
+            </View>
+          </SafeAreaView>
         </View>
       </Modal>
       
@@ -402,23 +410,45 @@ const styles = StyleSheet.create({
   modalOverlay: {
     flex: 1,
     backgroundColor: 'rgba(0, 0, 0, 0.5)',
+  },
+  modalBackdrop: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+  },
+  modalSafeArea: {
+    flex: 1,
     justifyContent: 'flex-end',
   },
   notificationsModal: {
     backgroundColor: '#FFFFFF',
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
-    maxHeight: '80%',
-    paddingTop: 20,
+    maxHeight: '70%',
+    minHeight: 300,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: -3,
+    },
+    shadowOpacity: 0.27,
+    shadowRadius: 4.65,
+    elevation: 6,
   },
   modalHeader: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
     paddingHorizontal: 20,
+    paddingTop: 20,
     paddingBottom: 16,
     borderBottomWidth: 1,
     borderBottomColor: '#E5E7EB',
+    backgroundColor: '#FFFFFF',
+    borderTopLeftRadius: 20,
+    borderTopRightRadius: 20,
   },
   modalTitle: {
     fontSize: 20,
@@ -437,6 +467,7 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingHorizontal: 20,
     paddingVertical: 16,
+    backgroundColor: '#FFFFFF',
   },
   notificationModalCard: {
     backgroundColor: '#F9FAFB',
@@ -445,5 +476,13 @@ const styles = StyleSheet.create({
     marginBottom: 12,
     borderWidth: 1,
     borderColor: '#E5E7EB',
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 1,
+    },
+    shadowOpacity: 0.18,
+    shadowRadius: 1.00,
+    elevation: 1,
   },
 });

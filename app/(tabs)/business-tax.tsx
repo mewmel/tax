@@ -179,10 +179,13 @@ const styles = StyleSheet.create({
     padding: 20,
     marginTop: 20,
     shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
     shadowOpacity: 0.1,
-    shadowRadius: 4,
-    elevation: 2,
+    shadowRadius: 3.84,
+    elevation: 5,
   },
   sectionTitle: {
     fontSize: 18,
@@ -220,7 +223,7 @@ const styles = StyleSheet.create({
     color: '#111827',
   },
   businessInfo: {
-    gap: 8,
+    marginBottom: 8,
   },
   businessName: {
     fontSize: 20,
@@ -231,6 +234,7 @@ const styles = StyleSheet.create({
   businessDetail: {
     fontSize: 14,
     color: '#6B7280',
+    marginBottom: 4,
   },
   section: {
     marginTop: 24,
@@ -243,9 +247,12 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     shadowColor: '#000',
-    shadowOffset: { width: 0, height: 1 },
-    shadowOpacity: 0.1,
-    shadowRadius: 2,
+    shadowOffset: {
+      width: 0,
+      height: 1,
+    },
+    shadowOpacity: 0.18,
+    shadowRadius: 1.00,
     elevation: 1,
   },
   urgentService: {

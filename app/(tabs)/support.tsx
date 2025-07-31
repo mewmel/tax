@@ -113,7 +113,7 @@ export default function SupportScreen() {
         {/* Search Bar */}
         <View style={styles.searchContainer}>
           <View style={styles.searchBar}>
-            <Search size={20} color="#6B7280" />
+            <Search size={20} color="#6B7280" style={styles.searchIcon} />
             <TextInput
               style={styles.searchInput}
               placeholder="Tìm kiếm câu hỏi, hướng dẫn..."
@@ -226,9 +226,11 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.1,
     shadowRadius: 8,
     elevation: 4,
-    gap: 12,
     borderWidth: 1,
     borderColor: '#D1FAE5',
+  },
+  searchIcon: {
+    marginRight: 12,
   },
   searchInput: {
     flex: 1,
@@ -253,7 +255,10 @@ const styles = StyleSheet.create({
   viewAllButton: {
     flexDirection: 'row',
     alignItems: 'center',
-    gap: 4,
+    paddingRight: 2,
+  },
+  viewAllIcon: {
+    marginLeft: 4,
   },
   viewAllText: {
     fontSize: 14,
@@ -305,19 +310,22 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     shadowColor: '#000',
-    shadowOffset: { width: 0, height: 1 },
-    shadowOpacity: 0.1,
-    shadowRadius: 2,
+    shadowOffset: {
+      width: 0,
+      height: 1,
+    },
+    shadowOpacity: 0.18,
+    shadowRadius: 1.00,
     elevation: 1,
   },
   faqContent: {
     flexDirection: 'row',
     alignItems: 'flex-start',
     flex: 1,
-    gap: 12,
   },
   faqText: {
     flex: 1,
+    marginLeft: 12,
   },
   faqQuestion: {
     fontSize: 16,
@@ -372,11 +380,11 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     paddingVertical: 12,
     borderRadius: 8,
-    gap: 8,
   },
   emergencyButtonText: {
     fontSize: 16,
     fontWeight: '600',
     color: '#FFFFFF',
+    marginLeft: 8,
   },
 });

@@ -91,7 +91,7 @@ export default function PersonalTaxScreen() {
             <View key={declaration.id} style={styles.declarationCard}>
               <View style={styles.declarationHeader}>
                 <Text style={styles.declarationYear}>Năm {declaration.year}</Text>
-                <View style={[styles.statusBadge, styles[`status${declaration.type}`]]}>
+                <View style={[styles.statusBadge, (styles as any)[`status${declaration.type}`]]}>
                   <Text style={styles.statusText}>{declaration.status}</Text>
                 </View>
               </View>
@@ -100,12 +100,12 @@ export default function PersonalTaxScreen() {
                 <Text style={styles.declarationDate}>Ngày nộp: {declaration.date}</Text>
               </View>
               <View style={styles.declarationActions}>
-                <TouchableOpacity style={styles.actionButton}>
-                  <Eye size={16} color="#1E40AF" />
+                <TouchableOpacity style={[styles.actionButton, styles.firstActionButton]}>
+                  <Eye size={16} color="#1E40AF" style={styles.actionIcon} />
                   <Text style={styles.actionText}>Xem</Text>
                 </TouchableOpacity>
                 <TouchableOpacity style={styles.actionButton}>
-                  <Download size={16} color="#1E40AF" />
+                  <Download size={16} color="#1E40AF" style={styles.actionIcon} />
                   <Text style={styles.actionText}>Tải về</Text>
                 </TouchableOpacity>
               </View>
@@ -328,12 +328,18 @@ const styles = StyleSheet.create({
   },
   declarationActions: {
     flexDirection: 'row',
-    gap: 16,
+    paddingHorizontal: 8,
+  },
+  firstActionButton: {
+    marginRight: 16,
   },
   actionButton: {
     flexDirection: 'row',
     alignItems: 'center',
-    gap: 4,
+    paddingRight: 2,
+  },
+  actionIcon: {
+    marginRight: 4,
   },
   actionText: {
     fontSize: 14,

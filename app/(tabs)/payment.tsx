@@ -225,7 +225,6 @@ const styles = StyleSheet.create({
   viewAllButton: {
     flexDirection: 'row',
     alignItems: 'center',
-    gap: 4,
   },
   viewAllText: {
     fontSize: 14,
@@ -237,9 +236,12 @@ const styles = StyleSheet.create({
     padding: 16,
     marginBottom: 12,
     shadowColor: '#000',
-    shadowOffset: { width: 0, height: 1 },
-    shadowOpacity: 0.1,
-    shadowRadius: 2,
+    shadowOffset: {
+      width: 0,
+      height: 1,
+    },
+    shadowOpacity: 0.18,
+    shadowRadius: 1.00,
     elevation: 1,
   },
   pendingHeader: {
@@ -251,12 +253,12 @@ const styles = StyleSheet.create({
   pendingInfo: {
     flexDirection: 'row',
     alignItems: 'center',
-    gap: 8,
   },
   pendingType: {
     fontSize: 16,
     fontWeight: '600',
     color: '#111827',
+    marginLeft: 8,
   },
   pendingAmount: {
     fontSize: 16,
@@ -302,18 +304,20 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     shadowColor: '#000',
-    shadowOffset: { width: 0, height: 1 },
-    shadowOpacity: 0.1,
-    shadowRadius: 2,
+    shadowOffset: {
+      width: 0,
+      height: 1,
+    },
+    shadowOpacity: 0.18,
+    shadowRadius: 1.00,
     elevation: 1,
   },
   recentLeft: {
     flexDirection: 'row',
     alignItems: 'center',
-    gap: 12,
   },
   recentInfo: {
-    gap: 2,
+    marginLeft: 12,
   },
   recentType: {
     fontSize: 16,
@@ -323,10 +327,12 @@ const styles = StyleSheet.create({
   recentMethod: {
     fontSize: 14,
     color: '#6B7280',
+    marginTop: 2,
   },
   recentDate: {
     fontSize: 12,
     color: '#9CA3AF',
+    marginTop: 2,
   },
   recentAmount: {
     fontSize: 16,
@@ -338,9 +344,12 @@ const styles = StyleSheet.create({
     borderRadius: 12,
     padding: 16,
     shadowColor: '#000',
-    shadowOffset: { width: 0, height: 1 },
-    shadowOpacity: 0.1,
-    shadowRadius: 2,
+    shadowOffset: {
+      width: 0,
+      height: 1,
+    },
+    shadowOpacity: 0.18,
+    shadowRadius: 1.00,
     elevation: 1,
   },
   scheduleTitle: {

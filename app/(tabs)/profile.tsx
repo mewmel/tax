@@ -71,7 +71,7 @@ export default function ProfileScreen() {
             <Text style={styles.userTaxId}>MST: {userInfo.taxId}</Text>
             <Text style={styles.userDetail}>CCCD: {userInfo.citizenId}</Text>
             <View style={styles.verificationStatus}>
-              <Shield size={16} color="#059669" />
+              <Shield size={16} color="#059669" style={styles.verificationIcon} />
               <Text style={styles.verifiedText}>Đã xác thực VNeID</Text>
             </View>
           </View>
@@ -174,7 +174,7 @@ export default function ProfileScreen() {
         {/* Logout */}
         <View style={styles.section}>
           <TouchableOpacity style={styles.logoutButton}>
-            <LogOut size={20} color="#DC2626" />
+            <LogOut size={20} color="#DC2626" style={styles.logoutIcon} />
             <Text style={styles.logoutText}>Đăng xuất</Text>
           </TouchableOpacity>
         </View>
@@ -206,10 +206,13 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     borderBottomColor: '#D1FAE5',
     shadowColor: '#000',
-    shadowOffset: { width: 0, height: 4 },
+    shadowOffset: {
+      width: 0,
+      height: 4,
+    },
     shadowOpacity: 0.1,
-    shadowRadius: 8,
-    elevation: 8,
+    shadowRadius: 5.46,
+    elevation: 9,
   },
   headerTitle: {
     fontSize: 24,
@@ -233,10 +236,13 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     shadowColor: '#000',
-    shadowOffset: { width: 0, height: 4 },
+    shadowOffset: {
+      width: 0,
+      height: 4,
+    },
     shadowOpacity: 0.15,
-    shadowRadius: 12,
-    elevation: 8,
+    shadowRadius: 6.27,
+    elevation: 10,
     borderWidth: 1,
     borderColor: '#D1FAE5',
   },
@@ -288,7 +294,10 @@ const styles = StyleSheet.create({
   verificationStatus: {
     flexDirection: 'row',
     alignItems: 'center',
-    gap: 6,
+    paddingHorizontal: 3,
+  },
+  verificationIcon: {
+    marginRight: 6,
   },
   verifiedText: {
     fontSize: 14,
@@ -454,12 +463,15 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
-    gap: 8,
+    paddingHorizontal: 4,
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 1 },
     shadowOpacity: 0.1,
     shadowRadius: 2,
     elevation: 1,
+  },
+  logoutIcon: {
+    marginRight: 8,
   },
   logoutText: {
     fontSize: 16,

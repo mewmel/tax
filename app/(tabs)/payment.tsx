@@ -100,13 +100,11 @@ export default function PaymentScreen() {
           <Text style={styles.sectionTitle}>Khoản thuế cần nộp</Text>
           {pendingPayments.map((payment) => (
             <View key={payment.id} style={[styles.pendingCard, { backgroundColor: getStatusColor(payment.status) }]}>
-              <View style={styles.pendingHeader}>
-                <View style={styles.pendingInfo}>
-                  {getStatusIcon(payment.status)}
-                  <Text style={styles.pendingType}>{payment.type}</Text>
-                </View>
-                <Text style={styles.pendingAmount}>{payment.amount} ₫</Text>
+              <View style={styles.pendingInfo}>
+                {getStatusIcon(payment.status)}
+                <Text style={styles.pendingType}>{payment.type}</Text>
               </View>
+              <Text style={styles.pendingAmount}>{payment.amount} ₫</Text>
               <View style={styles.pendingDetails}>
                 <Text style={styles.pendingDue}>Hạn cuối: {payment.dueDate}</Text>
                 <Text style={[
@@ -247,19 +245,11 @@ const styles = StyleSheet.create({
     shadowRadius: 1.00,
     elevation: 1,
   },
-  pendingHeader: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    marginBottom: 8,
-  },
   pendingInfo: {
     flexDirection: 'row',
     alignItems: 'center',
-    paddingRight: 4,
-  },
-  pendingIcon: {
-    marginRight: 8,
+    marginBottom: 12,
+    width: '100%',
   },
   pendingType: {
     fontSize: 16,
@@ -267,16 +257,22 @@ const styles = StyleSheet.create({
     color: '#111827',
     marginLeft: 8,
     flex: 1,
+    flexWrap: 'wrap',
   },
   pendingAmount: {
-    fontSize: 16,
+    fontSize: 20,
     fontWeight: '700',
     color: '#111827',
+    marginBottom: 12,
+    textAlign: 'left',
+    width: '100%',
   },
   pendingDetails: {
     flexDirection: 'row',
     justifyContent: 'space-between',
+    alignItems: 'center',
     marginBottom: 12,
+    width: '100%',
   },
   pendingDue: {
     fontSize: 14,
